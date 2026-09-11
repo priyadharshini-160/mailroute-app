@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipment Management | MailRoute AI</title>
+    <meta name="description" content="Create and manage shipments with AI route optimization">
+    <link rel="stylesheet" href="../css/shipment.css">
+    <script src="../js/config.js"></script>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <span class="logo-icon">📦</span>
+            <span>MailRoute <strong>AI</strong></span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <span>🏠</span> Dashboard
+            </a>
+            <a href="shipment.html" class="nav-item active">
+                <span>📦</span> Shipments
+            </a>
+            <a href="route.html" class="nav-item">
+                <span>🗺️</span> Route Optimization
+            </a>
+            <a href="tracking.html" class="nav-item">
+                <span>📍</span> Live Tracking
+            </a>
+            <a href="reports.html" class="nav-item">
+                <span>📊</span> Analytics
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button id="logoutBtn" class="logout-btn">
+                🚪 Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+            <div>
+                <p class="page-label">LOGISTICS DISPATCH</p>
+                <h1>Shipment Management</h1>
+            </div>
+
+            <div class="user-area">
+                <div class="notification" title="Notifications">🔔</div>
+                <div class="user-info">
+                    <div class="avatar" id="userAvatar">U</div>
+                    <div>
+                        <strong id="userName">User</strong>
+                        <small>Logistics Manager</small>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- SHIPMENT FORM & OVERVIEW -->
+        <section class="shipment-grid">
+            
+            <!-- CREATE SHIPMENT FORM -->
+            <div class="panel form-panel">
+                <div class="panel-heading">
+                    <div>
+                        <span class="section-tag">NEW SHIPMENT REGISTRATION</span>
+                        <h2>Create Shipment</h2>
+                    </div>
+                    <span class="panel-icon">📦</span>
+                </div>
+
+                <form id="shipmentForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="shipmentId">Shipment ID (Optional Auto-ID)</label>
+                            <input type="text" id="shipmentId" placeholder="e.g. MR-1027">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="weight">Weight (kg) *</label>
+                            <input type="number" id="weight" placeholder="e.g. 250" min="1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="source">Source Location *</label>
+                            <input type="text" id="source" placeholder="Origin city / hub" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="destination">Destination *</label>
+                            <input type="text" id="destination" placeholder="Destination city / hub" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="priority">Priority Level *</label>
+                            <select id="priority" required>
+                                <option value="Low">Low</option>
+                                <option value="Medium" selected>Medium</option>
+                                <option value="High">High</option>
+                                <option value="Urgent">Urgent</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mode">Transportation Preference *</label>
+                            <select id="mode" required>
+                                <option value="AI Recommended" selected>🤖 AI Recommended (Optimal)</option>
+                                <option value="Road">🚚 Road</option>
+                                <option value="Rail">🚆 Rail</option>
+                                <option value="Air">✈️ Air</option>
+                                <option value="Water">🚢 Water</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="shipmentMessage" class="shipment-message"></div>
+
+                    <button type="submit" class="submit-btn" id="createShipmentBtn">
+                        <span>🧠 Optimize & Create Shipment →</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- QUICK GUIDANCE CARD -->
+            <div class="panel info-card">
+                <span class="info-badge">🤖 AI ROUTE ENGINE ACTIVE</span>
+                <h3>Smart Optimization Features</h3>
+                <p>When creating a shipment with "AI Recommended" mode:</p>
+                <ul class="info-list">
+                    <li>⚡ Evaluates delivery speeds across Road, Rail, Air, and Water.</li>
+                    <li>💰 Calculates baseline transport cost per km and weight.</li>
+                    <li>⚠️ Predicts delay probabilities based on weather & traffic.</li>
+                    <li>📍 Generates instant live tracking records for dispatch.</li>
+                </ul>
+                <div class="stats-mini">
+                    <div>
+                        <strong id="shipmentCountBadge">0</strong>
+                        <span>Active Database Records</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SHIPMENTS DATABASE TABLE -->
+        <section class="panel table-panel">
+            <div class="table-toolbar">
+                <div>
+                    <span class="section-tag">DATABASE LIST</span>
+                    <h2>All Shipments</h2>
+                </div>
+
+                <div class="toolbar-actions">
+                    <div class="search-input">
+                        <span>🔍</span>
+                        <input type="text" id="shipmentSearch" placeholder="Search by ID, Origin, Destination...">
+                    </div>
+                    <select id="statusFilter" class="filter-select">
+                        <option value="all">All Status</option>
+                        <option value="Pending">Pending</option>
+                        <option value="In Transit">In Transit</option>
+                        <option value="Delivered">Delivered</option>
+                        <option value="Delayed">Delayed</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>SHIPMENT ID</th>
+                            <th>SOURCE → DESTINATION</th>
+                            <th>WEIGHT</th>
+                            <th>PRIORITY</th>
+                            <th>MODE</th>
+                            <th>EST. COST</th>
+                            <th>EST. TIME</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="shipmentRows">
+                        <!-- Populated by js/shipment.js -->
+                    </tbody>
+                </table>
+                <div id="emptyState" class="empty-state">
+                    📦 No shipments found matching your search.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="../js/shipment.js"></script>
+</body>
+</html>

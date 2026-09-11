@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Shipments | MailRoute AI</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/shipment.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <span class="logo-icon">
+                📦
+            </span>
+
+            <span>
+                MailRoute <strong>AI</strong>
+            </span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="dashboard.html"
+                class="nav-item"
+            >
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+
+            <a
+                href="shipment.html"
+                class="nav-item active"
+            >
+                <span>📦</span>
+                Shipments
+            </a>
+
+
+            <a
+                href="route.html"
+                class="nav-item"
+            >
+                <span>🗺️</span>
+                Route Optimization
+            </a>
+
+
+            <a
+                href="tracking.html"
+                class="nav-item"
+            >
+                <span>📍</span>
+                Live Tracking
+            </a>
+
+
+            <a
+                href="reports.html"
+                class="nav-item"
+            >
+                <span>📊</span>
+                Analytics
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                class="logout-btn"
+                id="logoutBtn"
+            >
+                🚪 Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="page-label">
+                    MAILROUTE AI / SHIPMENTS
+                </p>
+
+                <h1>
+                    Shipment Management
+                </h1>
+
+            </div>
+
+
+            <div class="user-area">
+
+                <div class="notification">
+                    🔔
+                </div>
+
+
+                <div class="user-info">
+
+                    <div
+                        class="avatar"
+                        id="userAvatar"
+                    >
+                        U
+                    </div>
+
+
+                    <div>
+
+                        <strong id="userName">
+                            User
+                        </strong>
+
+                        <small>
+                            Logistics Manager
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE HERO
+        ================================================== -->
+
+        <section class="shipment-hero">
+
+            <div>
+
+                <span class="hero-tag">
+                    SMART SHIPMENT MANAGEMENT
+                </span>
+
+                <h2>
+                    Manage Your Shipments
+                </h2>
+
+                <p>
+                    Create, monitor and manage shipments
+                    before selecting the most efficient
+                    transportation route.
+                </p>
+
+            </div>
+
+
+            <div class="hero-icon">
+                📦
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ADD SHIPMENT FORM
+        ================================================== -->
+
+        <section class="panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <span class="section-tag">
+                        NEW SHIPMENT
+                    </span>
+
+                    <h2>
+                        Create Shipment
+                    </h2>
+
+                </div>
+
+                <span class="form-icon">
+                    ➕
+                </span>
+
+            </div>
+
+
+            <form
+                id="shipmentForm"
+                class="shipment-form"
+            >
+
+
+                <!-- Shipment ID -->
+
+                <div class="form-group">
+
+                    <label for="shipmentId">
+                        Shipment ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="shipmentId"
+                        placeholder="Example: MR-1001"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Source -->
+
+                <div class="form-group">
+
+                    <label for="source">
+                        Source Location
+                    </label>
+
+                    <input
+                        type="text"
+                        id="source"
+                        placeholder="Example: Coimbatore"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Destination -->
+
+                <div class="form-group">
+
+                    <label for="destination">
+                        Destination
+                    </label>
+
+                    <input
+                        type="text"
+                        id="destination"
+                        placeholder="Example: Delhi"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Weight -->
+
+                <div class="form-group">
+
+                    <label for="weight">
+                        Weight (kg)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="weight"
+                        placeholder="Example: 250"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- Priority -->
+
+                <div class="form-group">
+
+                    <label for="priority">
+                        Priority
+                    </label>
+
+                    <select
+                        id="priority"
+                        required
+                    >
+
+                        <option value="">
+                            Select Priority
+                        </option>
+
+                        <option value="Low">
+                            Low
+                        </option>
+
+                        <option value="Medium">
+                            Medium
+                        </option>
+
+                        <option value="High">
+                            High
+                        </option>
+
+                        <option value="Urgent">
+                            Urgent
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- Transportation Mode -->
+
+                <div class="form-group">
+
+                    <label for="mode">
+                        Preferred Transportation
+                    </label>
+
+                    <select id="mode">
+
+                        <option value="AI Recommended">
+                            AI Recommended
+                        </option>
+
+                        <option value="Road">
+                            🚚 Road
+                        </option>
+
+                        <option value="Rail">
+                            🚆 Rail
+                        </option>
+
+                        <option value="Air">
+                            ✈️ Air
+                        </option>
+
+                        <option value="Water">
+                            🚢 Water
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- Submit -->
+
+                <div class="form-actions">
+
+                    <button
+                        type="reset"
+                        class="secondary-btn"
+                    >
+                        Clear
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        Create Shipment →
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <!-- Form Message -->
+
+            <div
+                id="shipmentMessage"
+                class="shipment-message"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SHIPMENT LIST
+        ================================================== -->
+
+        <section class="panel shipments-panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <span class="section-tag">
+                        SHIPMENT DATABASE
+                    </span>
+
+                    <h2>
+                        All Shipments
+                    </h2>
+
+                </div>
+
+
+                <div class="shipment-count">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="shipmentCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Search -->
+
+            <div class="shipment-toolbar">
+
+                <div class="search-box">
+
+                    <span>
+                        🔍
+                    </span>
+
+                    <input
+                        type="text"
+                        id="shipmentSearch"
+                        placeholder="Search shipment..."
+                    >
+
+                </div>
+
+
+                <select
+                    id="statusFilter"
+                    class="status-filter"
+                >
+
+                    <option value="all">
+                        All Status
+                    </option>
+
+                    <option value="Pending">
+                        Pending
+                    </option>
+
+                    <option value="In Transit">
+                        In Transit
+                    </option>
+
+                    <option value="Delivered">
+                        Delivered
+                    </option>
+
+                    <option value="Delayed">
+                        Delayed
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- Table -->
+
+            <div
+                class="shipment-table"
+                id="shipmentTable"
+            >
+
+                <div class="table-header">
+
+                    <span>
+                        Shipment
+                    </span>
+
+                    <span>
+                        Route
+                    </span>
+
+                    <span>
+                        Mode
+                    </span>
+
+                    <span>
+                        Priority
+                    </span>
+
+                    <span>
+                        Status
+                    </span>
+
+                    <span>
+                        Action
+                    </span>
+
+                </div>
+
+
+                <!-- JavaScript inserts rows here -->
+
+                <div
+                    id="shipmentRows"
+                    class="shipment-rows"
+                ></div>
+
+
+            </div>
+
+
+            <!-- Empty State -->
+
+            <div
+                id="emptyState"
+                class="empty-state"
+            >
+
+                <div>
+                    📦
+                </div>
+
+                <h3>
+                    No Shipments Found
+                </h3>
+
+                <p>
+                    Create your first shipment to
+                    start using MailRoute AI.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             AI INFORMATION
+        ================================================== -->
+
+        <section class="ai-info">
+
+            <div class="ai-icon">
+                🧠
+            </div>
+
+
+            <div>
+
+                <h3>
+                    AI Route Recommendation
+                </h3>
+
+                <p>
+                    After creating a shipment,
+                    MailRoute AI can compare Road,
+                    Rail, Air and Water transportation
+                    options and recommend the best route
+                    based on delivery time, cost and
+                    reliability.
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="../js/shipment.js"
+    ></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | MailRoute AI</title>
+
+    <link rel="stylesheet"
+          href="../css/dashboard.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <span class="logo-icon">📦</span>
+
+        <span>
+            MailRoute <strong>AI</strong>
+        </span>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+        <a href="dashboard.html"
+           class="nav-item active">
+
+            <span>🏠</span>
+            Dashboard
+
+        </a>
+
+
+        <a href="shipment.html"
+           class="nav-item">
+
+            <span>📦</span>
+            Shipments
+
+        </a>
+
+
+        <a href="route.html"
+           class="nav-item">
+
+            <span>🗺️</span>
+            Route Optimization
+
+        </a>
+
+
+        <a href="tracking.html"
+           class="nav-item">
+
+            <span>📍</span>
+            Live Tracking
+
+        </a>
+
+
+        <a href="reports.html"
+           class="nav-item">
+
+            <span>📊</span>
+            Analytics
+
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <button id="logoutBtn"
+                class="logout-btn">
+
+            🚪 Logout
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="main-content">
+
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <div>
+
+            <p class="page-label">
+                Overview
+            </p>
+
+            <h1>
+                Dashboard
+            </h1>
+
+        </div>
+
+
+        <div class="user-area">
+
+            <div class="notification">
+                🔔
+                <span></span>
+            </div>
+
+
+            <div class="user-info">
+
+                <div class="avatar"
+                     id="userAvatar">
+                    U
+                </div>
+
+                <div>
+
+                    <strong id="userName">
+                        User
+                    </strong>
+
+                    <small>
+                        Logistics Manager
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         WELCOME BANNER
+    ================================================= -->
+
+    <section class="welcome-banner">
+
+        <div class="welcome-text">
+
+            <span class="welcome-badge">
+                🧠 AI-powered logistics
+            </span>
+
+            <h2>
+                Welcome back,
+                <span id="welcomeName">
+                    User
+                </span> 👋
+            </h2>
+
+            <p>
+                Manage your shipments and find the
+                smartest transportation routes with
+                MailRoute AI.
+            </p>
+
+        </div>
+
+
+        <div class="banner-illustration">
+
+            🗺️
+
+            <div class="route-dot dot-one"></div>
+            <div class="route-dot dot-two"></div>
+            <div class="route-dot dot-three"></div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         STATISTICS
+    ================================================= -->
+
+    <section class="stats-grid">
+
+
+        <div class="stat-card blue">
+
+            <div class="stat-icon">
+                📦
+            </div>
+
+            <div>
+
+                <span>
+                    Total Shipments
+                </span>
+
+                <h3 id="totalShipments">
+                    24
+                </h3>
+
+                <small>
+                    ↑ 12% this month
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card purple">
+
+            <div class="stat-icon">
+                🚚
+            </div>
+
+            <div>
+
+                <span>
+                    Active Shipments
+                </span>
+
+                <h3 id="activeShipments">
+                    08
+                </h3>
+
+                <small>
+                    Currently moving
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card green">
+
+            <div class="stat-icon">
+                ✅
+            </div>
+
+            <div>
+
+                <span>
+                    Delivered
+                </span>
+
+                <h3 id="deliveredShipments">
+                    14
+                </h3>
+
+                <small>
+                    96% success rate
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card orange">
+
+            <div class="stat-icon">
+                ⚠️
+            </div>
+
+            <div>
+
+                <span>
+                    Delayed
+                </span>
+
+                <h3 id="delayedShipments">
+                    02
+                </h3>
+
+                <small>
+                    Needs attention
+                </small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         DASHBOARD GRID
+    ================================================= -->
+
+    <section class="dashboard-grid">
+
+
+        <!-- AI ROUTE CARD -->
+
+        <div class="panel route-panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <span class="section-tag">
+                        AI ENGINE
+                    </span>
+
+                    <h2>
+                        Intelligent Route Selection
+                    </h2>
+
+                </div>
+
+                <span class="brain">
+                    🧠
+                </span>
+
+            </div>
+
+
+            <p class="panel-description">
+
+                Let AI compare transportation modes
+                and recommend the optimal route based
+                on time, cost and reliability.
+
+            </p>
+
+
+            <div class="route-inputs">
+
+                <div class="location-box">
+
+                    <small>
+                        FROM
+                    </small>
+
+                    <strong>
+                        Coimbatore
+                    </strong>
+
+                </div>
+
+
+                <div class="route-arrow">
+                    →
+                </div>
+
+
+                <div class="location-box">
+
+                    <small>
+                        TO
+                    </small>
+
+                    <strong>
+                        Delhi
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="recommendation">
+
+                <div class="recommend-icon">
+                    🚆
+                </div>
+
+                <div>
+
+                    <small>
+                        AI RECOMMENDED
+                    </small>
+
+                    <h3>
+                        Rail + Road
+                    </h3>
+
+                    <p>
+                        Fast • Affordable • Reliable
+                    </p>
+
+                </div>
+
+                <span class="score">
+                    94%
+                </span>
+
+            </div>
+
+
+            <a href="route.html"
+               class="primary-btn">
+
+                Optimize Route →
+
+            </a>
+
+        </div>
+
+
+
+        <!-- PERFORMANCE CARD -->
+
+        <div class="panel performance-panel">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <span class="section-tag">
+                        PERFORMANCE
+                    </span>
+
+                    <h2>
+                        Transportation Overview
+                    </h2>
+
+                </div>
+
+                <span class="chart-icon">
+                    📊
+                </span>
+
+            </div>
+
+
+            <div class="performance-chart">
+
+                <div class="chart-bar">
+
+                    <span style="height: 75%;">
+                    </span>
+
+                    <small>
+                        Road
+                    </small>
+
+                </div>
+
+
+                <div class="chart-bar">
+
+                    <span style="height: 90%;">
+                    </span>
+
+                    <small>
+                        Rail
+                    </small>
+
+                </div>
+
+
+                <div class="chart-bar">
+
+                    <span style="height: 55%;">
+                    </span>
+
+                    <small>
+                        Air
+                    </small>
+
+                </div>
+
+
+                <div class="chart-bar">
+
+                    <span style="height: 42%;">
+                    </span>
+
+                    <small>
+                        Water
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="chart-legend">
+
+                <div>
+                    <strong>92%</strong>
+                    <span>Efficiency</span>
+                </div>
+
+                <div>
+                    <strong>86%</strong>
+                    <span>On Time</span>
+                </div>
+
+                <div>
+                    <strong>18%</strong>
+                    <span>Cost Saved</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         RECENT SHIPMENTS
+    ================================================= -->
+
+    <section class="panel shipments-panel">
+
+        <div class="panel-heading">
+
+            <div>
+
+                <span class="section-tag">
+                    RECENT ACTIVITY
+                </span>
+
+                <h2>
+                    Recent Shipments
+                </h2>
+
+            </div>
+
+
+            <a href="shipment.html"
+               class="view-all">
+
+                View All →
+
+            </a>
+
+        </div>
+
+
+        <div class="shipment-table">
+
+            <div class="table-header">
+
+                <span>
+                    Shipment
+                </span>
+
+                <span>
+                    Route
+                </span>
+
+                <span>
+                    Mode
+                </span>
+
+                <span>
+                    Status
+                </span>
+
+            </div>
+
+
+            <div class="shipment-row">
+
+                <span class="shipment-id">
+                    #MR-1024
+                </span>
+
+                <span>
+                    Coimbatore → Delhi
+                </span>
+
+                <span>
+                    🚆 Rail
+                </span>
+
+                <span class="status delivered">
+                    Delivered
+                </span>
+
+            </div>
+
+
+            <div class="shipment-row">
+
+                <span class="shipment-id">
+                    #MR-1025
+                </span>
+
+                <span>
+                    Chennai → Mumbai
+                </span>
+
+                <span>
+                    🚚 Road
+                </span>
+
+                <span class="status transit">
+                    In Transit
+                </span>
+
+            </div>
+
+
+            <div class="shipment-row">
+
+                <span class="shipment-id">
+                    #MR-1026
+                </span>
+
+                <span>
+                    Bengaluru → Kolkata
+                </span>
+
+                <span>
+                    ✈️ Air
+                </span>
+
+                <span class="status delayed">
+                    Delayed
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<script src="../js/dashboard.js"></script>
+
+</body>
+
+</html>

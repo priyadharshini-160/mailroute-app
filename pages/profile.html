@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Settings | MailRoute AI</title>
+    <meta name="description" content="User Profile & Account Settings">
+    <link rel="stylesheet" href="../css/profile.css">
+    <script src="../js/config.js"></script>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <span class="logo-icon">👤</span>
+            <span>MailRoute <strong>AI</strong></span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <span>🏠</span> Dashboard
+            </a>
+            <a href="shipment.html" class="nav-item">
+                <span>📦</span> Shipments
+            </a>
+            <a href="route.html" class="nav-item">
+                <span>🗺️</span> Route Optimization
+            </a>
+            <a href="tracking.html" class="nav-item">
+                <span>📍</span> Live Tracking
+            </a>
+            <a href="reports.html" class="nav-item">
+                <span>📊</span> Analytics
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button class="logout-btn" id="logoutBtn">
+                🚪 Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div>
+                <p class="page-label">USER ACCOUNT</p>
+                <h1>Profile Settings</h1>
+            </div>
+
+            <div class="user-area">
+                <div class="notification">🔔</div>
+                <div class="user-info">
+                    <div class="avatar" id="userAvatar">U</div>
+                    <div>
+                        <strong id="userName">User</strong>
+                        <small>Logistics Manager</small>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- PROFILE PANEL -->
+        <section class="panel profile-card">
+            <div class="profile-header">
+                <div class="big-avatar" id="bigAvatar">U</div>
+                <div>
+                    <h2 id="profileName">User Name</h2>
+                    <p id="profileEmail">user@mailroute.ai</p>
+                    <span class="role-badge">Logistics Manager</span>
+                </div>
+            </div>
+
+            <form id="profileForm" class="profile-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editName">Full Name</label>
+                        <input type="text" id="editName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEmail">Email Address</label>
+                        <input type="email" id="editEmail" required readonly>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editPhone">Phone Number</label>
+                        <input type="text" id="editPhone" placeholder="+91 98765 43210">
+                    </div>
+                    <div class="form-group">
+                        <label for="editOrg">Organization</label>
+                        <input type="text" id="editOrg" placeholder="MailRoute Logistics Hub">
+                    </div>
+                </div>
+
+                <div id="profileMessage" class="profile-message"></div>
+
+                <button type="submit" class="save-btn">Save Profile Changes</button>
+            </form>
+        </section>
+
+    </main>
+
+    <script src="../js/profile.js"></script>
+</body>
+</html>

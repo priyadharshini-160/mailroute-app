@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Profile | MailRoute AI</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/profile.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <span class="logo-icon">
+                🚚
+            </span>
+
+            <span>
+                MailRoute <strong>AI</strong>
+            </span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="dashboard.html"
+                class="nav-item"
+            >
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+
+            <a
+                href="shipment.html"
+                class="nav-item"
+            >
+                <span>📦</span>
+                Shipments
+            </a>
+
+
+            <a
+                href="route.html"
+                class="nav-item"
+            >
+                <span>🗺️</span>
+                Route Optimization
+            </a>
+
+
+            <a
+                href="tracking.html"
+                class="nav-item"
+            >
+                <span>📍</span>
+                Live Tracking
+            </a>
+
+
+            <a
+                href="reports.html"
+                class="nav-item"
+            >
+                <span>📊</span>
+                Analytics
+            </a>
+
+
+            <a
+                href="profile.html"
+                class="nav-item active"
+            >
+                <span>👤</span>
+                Profile
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                class="logout-btn"
+                id="logoutBtn"
+            >
+                🚪 Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="page-label">
+                    MAILROUTE AI / PROFILE
+                </p>
+
+                <h1>
+                    My Profile
+                </h1>
+
+            </div>
+
+
+            <div class="user-area">
+
+                <div
+                    class="notification"
+                    id="notification"
+                >
+                    🔔
+                </div>
+
+
+                <div class="top-avatar"
+                     id="topAvatar">
+                    U
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- PROFILE HERO -->
+
+        <section class="profile-hero">
+
+            <div
+                class="large-avatar"
+                id="largeAvatar"
+            >
+                U
+            </div>
+
+
+            <div class="profile-identity">
+
+                <span>
+                    LOGISTICS USER
+                </span>
+
+                <h2 id="profileName">
+                    User
+                </h2>
+
+                <p id="profileEmail">
+                    user@example.com
+                </p>
+
+                <div class="profile-status">
+                    <span></span>
+                    Active Account
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- PROFILE CONTENT -->
+
+        <section class="profile-grid">
+
+
+            <!-- PERSONAL INFORMATION -->
+
+            <div class="profile-card">
+
+                <div class="card-title">
+
+                    <div class="title-icon">
+                        👤
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Personal Information
+                        </h3>
+
+                        <p>
+                            Your account details
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="profileNameInput"
+                            placeholder="Enter your name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="profileEmailInput"
+                            placeholder="Enter your email"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="profilePhoneInput"
+                            placeholder="Enter phone number"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Organization
+                        </label>
+
+                        <input
+                            type="text"
+                            id="profileOrganizationInput"
+                            placeholder="Organization name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full-width">
+
+                        <label>
+                            Role
+                        </label>
+
+                        <select
+                            id="profileRoleInput"
+                        >
+
+                            <option value="Logistics Manager">
+                                Logistics Manager
+                            </option>
+
+                            <option value="Operations Manager">
+                                Operations Manager
+                            </option>
+
+                            <option value="Shipment Coordinator">
+                                Shipment Coordinator
+                            </option>
+
+                            <option value="Administrator">
+                                Administrator
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="save-btn"
+                    id="saveProfileBtn"
+                >
+                    💾 Save Changes
+                </button>
+
+            </div>
+
+
+
+            <!-- ACCOUNT INFORMATION -->
+
+            <div class="profile-card account-card">
+
+                <div class="card-title">
+
+                    <div class="title-icon purple">
+                        ⚙️
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Account Information
+                        </h3>
+
+                        <p>
+                            Account activity overview
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="account-list">
+
+
+                    <div class="account-row">
+
+                        <span>
+                            Account Status
+                        </span>
+
+                        <strong class="active-text">
+                            Active
+                        </strong>
+
+                    </div>
+
+
+                    <div class="account-row">
+
+                        <span>
+                            Account Type
+                        </span>
+
+                        <strong>
+                            Logistics User
+                        </strong>
+
+                    </div>
+
+
+                    <div class="account-row">
+
+                        <span>
+                            Total Shipments
+                        </span>
+
+                        <strong id="profileShipmentCount">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="account-row">
+
+                        <span>
+                            Completed Shipments
+                        </span>
+
+                        <strong id="profileCompletedCount">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="account-row">
+
+                        <span>
+                            Last Activity
+                        </span>
+
+                        <strong id="lastActivity">
+                            Today
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="security-box">
+
+                    <div class="security-icon">
+                        🔐
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Account Security
+                        </strong>
+
+                        <p>
+                            Your account information is
+                            stored securely in your browser.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- AI PROFILE INSIGHT -->
+
+        <section class="profile-ai">
+
+            <div class="ai-profile-icon">
+                🧠
+            </div>
+
+
+            <div>
+
+                <span>
+                    MAILROUTE AI
+                </span>
+
+                <h2>
+                    Your Logistics Command Center
+                </h2>
+
+                <p>
+                    Manage shipments, optimize routes,
+                    monitor delivery progress and analyze
+                    transportation performance from one
+                    intelligent platform.
+                </p>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script
+        src="../js/profile.js"
+    ></script>
+
+</body>
+
+</html>

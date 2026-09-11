@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Live Tracking | MailRoute AI</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/tracking.css"
+    >
+
+</head>
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <span class="logo-icon">
+                🚚
+            </span>
+
+            <span>
+                MailRoute <strong>AI</strong>
+            </span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="dashboard.html"
+                class="nav-item"
+            >
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+
+            <a
+                href="shipment.html"
+                class="nav-item"
+            >
+                <span>📦</span>
+                Shipments
+            </a>
+
+
+            <a
+                href="route.html"
+                class="nav-item"
+            >
+                <span>🗺️</span>
+                Route Optimization
+            </a>
+
+
+            <a
+                href="tracking.html"
+                class="nav-item active"
+            >
+                <span>📍</span>
+                Live Tracking
+            </a>
+
+
+            <a
+                href="reports.html"
+                class="nav-item"
+            >
+                <span>📊</span>
+                Analytics
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                class="logout-btn"
+                id="logoutBtn"
+            >
+                🚪 Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="page-label">
+                    MAILROUTE AI / LIVE MONITORING
+                </p>
+
+                <h1>
+                    Live Shipment Tracking
+                </h1>
+
+            </div>
+
+
+            <div class="user-area">
+
+                <div
+                    class="notification"
+                    id="notification"
+                >
+                    🔔
+                </div>
+
+
+                <div class="user-info">
+
+                    <div
+                        class="avatar"
+                        id="userAvatar"
+                    >
+                        U
+                    </div>
+
+
+                    <div>
+
+                        <strong id="userName">
+                            User
+                        </strong>
+
+                        <small>
+                            Logistics Manager
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             TRACKING HERO
+        ================================================== -->
+
+        <section class="tracking-hero">
+
+            <div class="hero-content">
+
+                <span class="hero-tag">
+                    REAL-TIME LOGISTICS MONITORING
+                </span>
+
+                <h2>
+                    Track Every Shipment,
+                    <br>
+                    Every Step of the Way
+                </h2>
+
+                <p>
+                    Monitor shipment progress, route status,
+                    estimated delivery time and possible
+                    transportation delays from one place.
+                </p>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="tracking-orbit orbit-1"></div>
+
+                <div class="tracking-orbit orbit-2"></div>
+
+                <div class="tracking-center">
+                    📍
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SEARCH SECTION
+        ================================================== -->
+
+        <section class="search-panel">
+
+            <div class="search-heading">
+
+                <span class="section-tag">
+                    SHIPMENT LOOKUP
+                </span>
+
+                <h2>
+                    Find Your Shipment
+                </h2>
+
+            </div>
+
+
+            <div class="search-box">
+
+                <span class="search-icon">
+                    🔍
+                </span>
+
+                <input
+                    type="text"
+                    id="trackingSearch"
+                    placeholder="Enter shipment ID, source or destination..."
+                >
+
+
+                <button
+                    type="button"
+                    id="trackBtn"
+                    class="track-btn"
+                >
+                    Track Shipment
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             TRACKING CONTENT
+        ================================================== -->
+
+        <section
+            id="trackingContent"
+            class="tracking-content"
+        >
+
+
+            <!-- =================================================
+                 SHIPMENT HEADER
+            ================================================== -->
+
+            <div class="shipment-header">
+
+                <div>
+
+                    <span class="section-tag">
+                        SHIPMENT DETAILS
+                    </span>
+
+                    <h2 id="trackingShipmentId">
+                        Select a shipment
+                    </h2>
+
+                </div>
+
+
+                <span
+                    id="trackingStatus"
+                    class="status-badge pending"
+                >
+                    Pending
+                </span>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ROUTE OVERVIEW
+            ================================================== -->
+
+            <div class="route-overview">
+
+                <div class="route-point">
+
+                    <div class="point-icon origin">
+                        ●
+                    </div>
+
+                    <div>
+
+                        <small>
+                            ORIGIN
+                        </small>
+
+                        <strong id="trackingSource">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="route-connector">
+
+                    <div class="moving-dot"></div>
+
+                    <div class="connector-line"></div>
+
+                    <span id="trackingMode">
+                        🚚 Road
+                    </span>
+
+                </div>
+
+
+                <div class="route-point">
+
+                    <div class="point-icon destination">
+                        ●
+                    </div>
+
+                    <div>
+
+                        <small>
+                            DESTINATION
+                        </small>
+
+                        <strong id="trackingDestination">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PROGRESS
+            ================================================== -->
+
+            <div class="progress-section">
+
+                <div class="progress-header">
+
+                    <div>
+
+                        <span class="section-tag">
+                            DELIVERY PROGRESS
+                        </span>
+
+                        <h3>
+                            Shipment Journey
+                        </h3>
+
+                    </div>
+
+
+                    <strong
+                        id="progressPercentage"
+                    >
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-fill"
+                        id="progressFill"
+                    ></div>
+
+                </div>
+
+
+                <div class="progress-labels">
+
+                    <span>
+                        Dispatched
+                    </span>
+
+                    <span>
+                        In Transit
+                    </span>
+
+                    <span>
+                        Near Destination
+                    </span>
+
+                    <span>
+                        Delivered
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TRACKING METRICS
+            ================================================== -->
+
+            <div class="tracking-metrics">
+
+
+                <!-- ETA -->
+
+                <div class="tracking-card">
+
+                    <div class="tracking-card-icon">
+                        ⏱️
+                    </div>
+
+                    <div>
+
+                        <small>
+                            ESTIMATED DELIVERY
+                        </small>
+
+                        <strong id="trackingETA">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- COST -->
+
+                <div class="tracking-card">
+
+                    <div class="tracking-card-icon">
+                        💰
+                    </div>
+
+                    <div>
+
+                        <small>
+                            TRANSPORT COST
+                        </small>
+
+                        <strong id="trackingCost">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- RELIABILITY -->
+
+                <div class="tracking-card">
+
+                    <div class="tracking-card-icon">
+                        🛡️
+                    </div>
+
+                    <div>
+
+                        <small>
+                            ROUTE RELIABILITY
+                        </small>
+
+                        <strong id="trackingReliability">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DELAY -->
+
+                <div class="tracking-card">
+
+                    <div class="tracking-card-icon">
+                        ⚠️
+                    </div>
+
+                    <div>
+
+                        <small>
+                            DELAY RISK
+                        </small>
+
+                        <strong id="trackingDelayRisk">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TIMELINE
+            ================================================== -->
+
+            <div class="timeline-section">
+
+                <div class="timeline-heading">
+
+                    <span class="section-tag">
+                        SHIPMENT TIMELINE
+                    </span>
+
+                    <h3>
+                        Tracking Activity
+                    </h3>
+
+                </div>
+
+
+                <div class="timeline">
+
+
+                    <!-- DISPATCHED -->
+
+                    <div
+                        class="timeline-item completed"
+                        id="timelineDispatched"
+                    >
+
+                        <div class="timeline-dot">
+                            ✓
+                        </div>
+
+                        <div class="timeline-content">
+
+                            <strong>
+                                Shipment Dispatched
+                            </strong>
+
+                            <p>
+                                Shipment has been registered
+                                and dispatched from the origin.
+                            </p>
+
+                            <small id="dispatchTime">
+                                —
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- IN TRANSIT -->
+
+                    <div
+                        class="timeline-item"
+                        id="timelineTransit"
+                    >
+
+                        <div class="timeline-dot">
+                            🚚
+                        </div>
+
+                        <div class="timeline-content">
+
+                            <strong>
+                                In Transit
+                            </strong>
+
+                            <p>
+                                Shipment is currently moving
+                                through the selected route.
+                            </p>
+
+                            <small id="transitTime">
+                                —
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- NEAR DESTINATION -->
+
+                    <div
+                        class="timeline-item"
+                        id="timelineNear"
+                    >
+
+                        <div class="timeline-dot">
+                            📍
+                        </div>
+
+                        <div class="timeline-content">
+
+                            <strong>
+                                Near Destination
+                            </strong>
+
+                            <p>
+                                Shipment is approaching
+                                the destination location.
+                            </p>
+
+                            <small id="nearTime">
+                                —
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- DELIVERED -->
+
+                    <div
+                        class="timeline-item"
+                        id="timelineDelivered"
+                    >
+
+                        <div class="timeline-dot">
+                            ✓
+                        </div>
+
+                        <div class="timeline-content">
+
+                            <strong>
+                                Delivered
+                            </strong>
+
+                            <p>
+                                Shipment has successfully
+                                reached its destination.
+                            </p>
+
+                            <small id="deliveredTime">
+                                —
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 AI DELAY ALERT
+            ================================================== -->
+
+            <div
+                class="delay-alert"
+                id="delayAlert"
+            >
+
+                <div class="alert-icon">
+                    🧠
+                </div>
+
+
+                <div>
+
+                    <span>
+                        AI ROUTE ANALYSIS
+                    </span>
+
+                    <h3 id="delayTitle">
+                        Route is operating normally
+                    </h3>
+
+                    <p id="delayMessage">
+                        No significant delay risk has
+                        been detected for this shipment.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             EMPTY STATE
+        ================================================== -->
+
+        <section
+            id="trackingEmpty"
+            class="tracking-empty"
+        >
+
+            <div class="empty-icon">
+                📦
+            </div>
+
+            <h2>
+                No Shipment Selected
+            </h2>
+
+            <p>
+                Enter a shipment ID above to view
+                its live tracking information.
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="../js/tracking.js"
+    ></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route Optimization | MailRoute AI</title>
+    <meta name="description" content="AI Route Optimization - Compare multimodal transport routes and optimize delivery speed, cost, and reliability">
+    <link rel="stylesheet" href="../css/route.css">
+    <script src="../js/config.js"></script>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <span class="logo-icon">🚚</span>
+            <span>MailRoute <strong>AI</strong></span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="nav-item">
+                <span>🏠</span> Dashboard
+            </a>
+            <a href="shipment.html" class="nav-item">
+                <span>📦</span> Shipments
+            </a>
+            <a href="route.html" class="nav-item active">
+                <span>🗺️</span> Route Optimization
+            </a>
+            <a href="tracking.html" class="nav-item">
+                <span>📍</span> Live Tracking
+            </a>
+            <a href="reports.html" class="nav-item">
+                <span>📊</span> Analytics
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button class="logout-btn" id="logoutBtn">
+                🚪 Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div>
+                <p class="page-label">MAILROUTE AI / ROUTE ENGINE</p>
+                <h1>Intelligent Route Selection</h1>
+            </div>
+
+            <div class="user-area">
+                <div class="notification">🔔</div>
+                <div class="user-info">
+                    <div class="avatar" id="userAvatar">U</div>
+                    <div>
+                        <strong id="userName">User</strong>
+                        <small>Logistics Manager</small>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- HERO -->
+        <section class="route-hero">
+            <div class="hero-content">
+                <span class="hero-tag">AI-POWERED MULTIMODAL TRANSPORTATION</span>
+                <h2>Find the Smartest Way<br>to Move Your Shipment</h2>
+                <p>
+                    Compare multiple transportation modes (Road, Rail, Air, Water) and let our intelligent ML route engine identify the optimal combination of speed, cost, and reliability.
+                </p>
+            </div>
+            <div class="hero-visual">
+                <div class="route-circle">🧠</div>
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+            </div>
+        </section>
+
+        <!-- ROUTE FORM PANEL -->
+        <section class="route-panel">
+            <div class="panel-heading">
+                <div>
+                    <span class="section-tag">ROUTE INPUT</span>
+                    <h2>Enter Shipment Details</h2>
+                </div>
+                <span class="panel-icon">📍</span>
+            </div>
+
+            <form id="routeForm" class="route-form">
+                <!-- SOURCE -->
+                <div class="location-input">
+                    <div class="input-icon source-icon">●</div>
+                    <div class="input-content">
+                        <label for="routeSource">FROM (Origin)</label>
+                        <input type="text" id="routeSource" placeholder="e.g. Coimbatore" required value="Coimbatore">
+                    </div>
+                </div>
+
+                <!-- SWAP -->
+                <button type="button" id="swapRoute" class="swap-btn" title="Swap locations">⇄</button>
+
+                <!-- DESTINATION -->
+                <div class="location-input">
+                    <div class="input-icon destination-icon">●</div>
+                    <div class="input-content">
+                        <label for="routeDestination">TO (Destination)</label>
+                        <input type="text" id="routeDestination" placeholder="e.g. Delhi" required value="Delhi">
+                    </div>
+                </div>
+
+                <!-- WEIGHT -->
+                <div class="route-field">
+                    <label for="routeWeight">SHIPMENT WEIGHT (kg)</label>
+                    <div class="field-wrapper">
+                        <input type="number" id="routeWeight" placeholder="250" min="1" required value="500">
+                        <span>kg</span>
+                    </div>
+                </div>
+
+                <!-- PRIORITY -->
+                <div class="route-field">
+                    <label for="routePriority">PRIORITY LEVEL</label>
+                    <select id="routePriority">
+                        <option value="Low">Low</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="High">High</option>
+                        <option value="Urgent">Urgent</option>
+                    </select>
+                </div>
+
+                <!-- OPTIMIZE BUTTON -->
+                <button type="submit" class="optimize-btn" id="optimizeBtn">
+                    <span>🧠</span> Find Optimal Route
+                </button>
+            </form>
+        </section>
+
+        <!-- LOADER -->
+        <section id="routeLoader" class="route-loader">
+            <div class="loader-spinner"></div>
+            <h3>AI is analyzing multimodal routes...</h3>
+            <p>Evaluating distance, speed, transportation cost, weather delay risk, and reliability scores.</p>
+        </section>
+
+        <!-- ROUTE COMPARISON CARDS (MULTIMODAL OVERVIEW) -->
+        <section class="transport-section">
+            <div class="section-title">
+                <div>
+                    <span class="section-tag">LOGISTICS MODES COMPARISON</span>
+                    <h2>Multimodal Options</h2>
+                </div>
+            </div>
+
+            <div class="transport-grid" id="transportGrid">
+                <!-- Populated dynamically with Road, Rail, Air, Water options -->
+                <div class="transport-card" data-mode="Road">
+                    <div class="transport-icon">🚚</div>
+                    <h3>Road</h3>
+                    <p>Flexible point-to-point delivery.</p>
+                    <div class="transport-details">
+                        <span>⏱ Est: 36 hrs</span>
+                        <span>💰 Cost: ₹6,500</span>
+                    </div>
+                </div>
+
+                <div class="transport-card" data-mode="Rail">
+                    <div class="transport-icon">🚆</div>
+                    <h3>Rail</h3>
+                    <p>High reliability, low cost for long distance.</p>
+                    <div class="transport-details">
+                        <span>⏱ Est: 28 hrs</span>
+                        <span>💰 Cost: ₹4,800</span>
+                    </div>
+                </div>
+
+                <div class="transport-card" data-mode="Air">
+                    <div class="transport-icon">✈️</div>
+                    <h3>Air</h3>
+                    <p>Fastest option for urgent deliveries.</p>
+                    <div class="transport-details">
+                        <span>⏱ Est: 8 hrs</span>
+                        <span>💰 Cost: ₹14,200</span>
+                    </div>
+                </div>
+
+                <div class="transport-card" data-mode="Water">
+                    <div class="transport-icon">🚢</div>
+                    <h3>Water</h3>
+                    <p>Economical for high-volume cargo.</p>
+                    <div class="transport-details">
+                        <span>⏱ Est: 72 hrs</span>
+                        <span>💰 Cost: ₹3,200</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULT SECTION -->
+        <section id="routeResult" class="route-result">
+            <div class="result-header">
+                <div>
+                    <span class="section-tag">AI PREDICTION RESULT</span>
+                    <h2>Recommended Optimal Route</h2>
+                </div>
+                <div class="ai-badge">🧠 ML Model Engine Active</div>
+            </div>
+
+            <!-- ROUTE PATH DISPLAY -->
+            <div class="route-path">
+                <div class="route-location">
+                    <div class="location-dot">●</div>
+                    <strong id="resultSource">Coimbatore</strong>
+                    <small>Origin</small>
+                </div>
+
+                <div class="path-line">
+                    <span class="path-mode" id="pathModeLabel">🚆 Rail + 🚚 Road</span>
+                    <div class="line"></div>
+                </div>
+
+                <div class="route-location">
+                    <div class="location-dot destination">●</div>
+                    <strong id="resultDestination">Delhi</strong>
+                    <small>Destination</small>
+                </div>
+            </div>
+
+            <!-- RECOMMENDED BOX -->
+            <div class="recommended-box">
+                <div class="recommend-icon" id="recommendIcon">🚆</div>
+                <div>
+                    <span>AI TOP RECOMMENDED OPTION</span>
+                    <h3 id="recommendedRoute">Rail + Road</h3>
+                    <p id="recommendationText">Fast • Affordable • Highly Reliable</p>
+                </div>
+                <div class="confidence">
+                    <span>AI Score</span>
+                    <strong id="confidenceValue">94%</strong>
+                </div>
+            </div>
+
+            <!-- METRICS GRID -->
+            <div class="result-metrics">
+                <div class="metric-card">
+                    <span class="metric-icon">⏱️</span>
+                    <div>
+                        <small>ESTIMATED TIME</small>
+                        <strong id="estimatedTime">28 hrs</strong>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <span class="metric-icon">💰</span>
+                    <div>
+                        <small>ESTIMATED COST</small>
+                        <strong id="estimatedCost">₹4,800</strong>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <span class="metric-icon">🛡️</span>
+                    <div>
+                        <small>RELIABILITY SCORE</small>
+                        <strong id="reliability">92%</strong>
+                    </div>
+                </div>
+
+                <div class="metric-card">
+                    <span class="metric-icon">⚠️</span>
+                    <div>
+                        <small>DELAY RISK</small>
+                        <strong id="delayRisk">Low (10%)</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTIONS -->
+            <div class="result-actions">
+                <button type="button" class="secondary-btn" id="resetRoute">Recalculate</button>
+                <button type="button" class="primary-btn" id="saveRoute">Save Recommended Route →</button>
+            </div>
+        </section>
+
+        <!-- AI EXPLANATION -->
+        <section class="ai-explanation">
+            <div class="ai-explanation-icon">🧠</div>
+            <div>
+                <span class="section-tag">AI EXPLANATION & RATIONALE</span>
+                <h3>Why Was This Route Recommended?</h3>
+                <p id="aiExplanation">
+                    Rail + Road provides the optimal balance of transportation cost, estimated delivery time, and operational reliability.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="../js/route.js"></script>
+</body>
+</html>

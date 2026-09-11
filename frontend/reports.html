@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Analytics & Reports | MailRoute AI</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/reports.css"
+    >
+
+</head>
+
+<body>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <span class="logo-icon">
+                🚚
+            </span>
+
+            <span>
+                MailRoute <strong>AI</strong>
+            </span>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="dashboard.html"
+                class="nav-item"
+            >
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+
+            <a
+                href="shipment.html"
+                class="nav-item"
+            >
+                <span>📦</span>
+                Shipments
+            </a>
+
+
+            <a
+                href="route.html"
+                class="nav-item"
+            >
+                <span>🗺️</span>
+                Route Optimization
+            </a>
+
+
+            <a
+                href="tracking.html"
+                class="nav-item"
+            >
+                <span>📍</span>
+                Live Tracking
+            </a>
+
+
+            <a
+                href="reports.html"
+                class="nav-item active"
+            >
+                <span>📊</span>
+                Analytics
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                class="logout-btn"
+                id="logoutBtn"
+            >
+                🚪 Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="page-label">
+                    MAILROUTE AI / ANALYTICS
+                </p>
+
+                <h1>
+                    Logistics Analytics
+                </h1>
+
+            </div>
+
+
+            <div class="user-area">
+
+                <div
+                    class="notification"
+                    id="notification"
+                >
+                    🔔
+                </div>
+
+
+                <div class="user-info">
+
+                    <div
+                        class="avatar"
+                        id="userAvatar"
+                    >
+                        U
+                    </div>
+
+
+                    <div>
+
+                        <strong id="userName">
+                            User
+                        </strong>
+
+                        <small>
+                            Logistics Manager
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE INTRO
+        ================================================== -->
+
+        <section class="reports-intro">
+
+            <div>
+
+                <span class="section-tag">
+                    PERFORMANCE OVERVIEW
+                </span>
+
+                <h2>
+                    Transportation Intelligence
+                </h2>
+
+                <p>
+                    Analyze shipment performance, transportation
+                    costs, delivery efficiency and route reliability
+                    using intelligent logistics insights.
+                </p>
+
+            </div>
+
+
+            <button
+                class="export-btn"
+                id="exportBtn"
+            >
+                📥 Export Report
+            </button>
+
+        </section>
+
+
+
+        <!-- =================================================
+             KPI CARDS
+        ================================================== -->
+
+        <section class="kpi-grid">
+
+
+            <!-- TOTAL SHIPMENTS -->
+
+            <div class="kpi-card">
+
+                <div class="kpi-icon blue">
+                    📦
+                </div>
+
+                <div>
+
+                    <span>
+                        TOTAL SHIPMENTS
+                    </span>
+
+                    <strong id="totalShipments">
+                        0
+                    </strong>
+
+                    <small>
+                        All registered shipments
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DELIVERED -->
+
+            <div class="kpi-card">
+
+                <div class="kpi-icon green">
+                    ✓
+                </div>
+
+                <div>
+
+                    <span>
+                        DELIVERED
+                    </span>
+
+                    <strong id="deliveredShipments">
+                        0
+                    </strong>
+
+                    <small>
+                        Successfully completed
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- IN TRANSIT -->
+
+            <div class="kpi-card">
+
+                <div class="kpi-icon purple">
+                    🚚
+                </div>
+
+                <div>
+
+                    <span>
+                        IN TRANSIT
+                    </span>
+
+                    <strong id="transitShipments">
+                        0
+                    </strong>
+
+                    <small>
+                        Currently moving
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TOTAL COST -->
+
+            <div class="kpi-card">
+
+                <div class="kpi-icon orange">
+                    ₹
+                </div>
+
+                <div>
+
+                    <span>
+                        TOTAL COST
+                    </span>
+
+                    <strong id="totalCost">
+                        ₹0
+                    </strong>
+
+                    <small>
+                        Estimated transportation cost
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ANALYTICS GRID
+        ================================================== -->
+
+        <section class="analytics-grid">
+
+
+            <!-- =================================================
+                 TRANSPORTATION MODE
+            ================================================== -->
+
+            <div class="analytics-card mode-card">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <span class="section-tag">
+                            TRANSPORTATION MIX
+                        </span>
+
+                        <h3>
+                            Preferred Transport Modes
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="mode-chart">
+
+                    <div class="donut-chart">
+
+                        <div class="donut-inner">
+
+                            <strong id="modeTotal">
+                                0
+                            </strong>
+
+                            <span>
+                                Shipments
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mode-legend">
+
+                        <div class="legend-item">
+
+                            <span class="legend-dot road"></span>
+
+                            <div>
+                                <strong>
+                                    Road
+                                </strong>
+
+                                <small
+                                    id="roadPercentage"
+                                >
+                                    0%
+                                </small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="legend-item">
+
+                            <span class="legend-dot rail"></span>
+
+                            <div>
+                                <strong>
+                                    Rail
+                                </strong>
+
+                                <small
+                                    id="railPercentage"
+                                >
+                                    0%
+                                </small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="legend-item">
+
+                            <span class="legend-dot air"></span>
+
+                            <div>
+                                <strong>
+                                    Air
+                                </strong>
+
+                                <small
+                                    id="airPercentage"
+                                >
+                                    0%
+                                </small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="legend-item">
+
+                            <span class="legend-dot water"></span>
+
+                            <div>
+                                <strong>
+                                    Water
+                                </strong>
+
+                                <small
+                                    id="waterPercentage"
+                                >
+                                    0%
+                                </small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DELIVERY PERFORMANCE
+            ================================================== -->
+
+            <div class="analytics-card performance-card">
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <span class="section-tag">
+                            DELIVERY PERFORMANCE
+                        </span>
+
+                        <h3>
+                            Shipment Status
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="performance-list">
+
+
+                    <div class="performance-row">
+
+                        <div class="performance-label">
+
+                            <span>
+                                Delivered
+                            </span>
+
+                            <strong id="deliveredPercent">
+                                0%
+                            </strong>
+
+                        </div>
+
+                        <div class="mini-progress">
+
+                            <div
+                                id="deliveredProgress"
+                                class="mini-progress-fill delivered-fill"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="performance-row">
+
+                        <div class="performance-label">
+
+                            <span>
+                                In Transit
+                            </span>
+
+                            <strong id="transitPercent">
+                                0%
+                            </strong>
+
+                        </div>
+
+                        <div class="mini-progress">
+
+                            <div
+                                id="transitProgress"
+                                class="mini-progress-fill transit-fill"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="performance-row">
+
+                        <div class="performance-label">
+
+                            <span>
+                                Pending
+                            </span>
+
+                            <strong id="pendingPercent">
+                                0%
+                            </strong>
+
+                        </div>
+
+                        <div class="mini-progress">
+
+                            <div
+                                id="pendingProgress"
+                                class="mini-progress-fill pending-fill"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="performance-row">
+
+                        <div class="performance-label">
+
+                            <span>
+                                Delayed
+                            </span>
+
+                            <strong id="delayedPercent">
+                                0%
+                            </strong>
+
+                        </div>
+
+                        <div class="mini-progress">
+
+                            <div
+                                id="delayedProgress"
+                                class="mini-progress-fill delayed-fill"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             COST + RELIABILITY
+        ================================================== -->
+
+        <section class="insight-grid">
+
+
+            <!-- COST ANALYSIS -->
+
+            <div class="insight-card">
+
+                <div class="insight-icon">
+                    💰
+                </div>
+
+                <div>
+
+                    <span>
+                        AVERAGE TRANSPORT COST
+                    </span>
+
+                    <strong id="averageCost">
+                        ₹0
+                    </strong>
+
+                    <p>
+                        Average cost per shipment
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RELIABILITY -->
+
+            <div class="insight-card">
+
+                <div class="insight-icon">
+                    🛡️
+                </div>
+
+                <div>
+
+                    <span>
+                        ROUTE RELIABILITY
+                    </span>
+
+                    <strong id="averageReliability">
+                        0%
+                    </strong>
+
+                    <p>
+                        Average route reliability score
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DELIVERY TIME -->
+
+            <div class="insight-card">
+
+                <div class="insight-icon">
+                    ⏱️
+                </div>
+
+                <div>
+
+                    <span>
+                        AVG DELIVERY TIME
+                    </span>
+
+                    <strong id="averageDeliveryTime">
+                        0 hrs
+                    </strong>
+
+                    <p>
+                        Average estimated delivery time
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             AI INSIGHTS
+        ================================================== -->
+
+        <section class="ai-insights">
+
+            <div class="ai-icon">
+                🧠
+            </div>
+
+
+            <div class="ai-content">
+
+                <span>
+                    AI LOGISTICS INSIGHTS
+                </span>
+
+                <h2>
+                    Smart Recommendations
+                </h2>
+
+                <p id="aiInsightText">
+                    Analyzing your shipment data
+                    to generate intelligent logistics
+                    recommendations...
+                </p>
+
+            </div>
+
+
+            <div class="ai-badge">
+                AI POWERED
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SHIPMENT PERFORMANCE TABLE
+        ================================================== -->
+
+        <section class="table-card">
+
+            <div class="table-heading">
+
+                <div>
+
+                    <span class="section-tag">
+                        SHIPMENT ANALYTICS
+                    </span>
+
+                    <h3>
+                        Recent Shipment Performance
+                    </h3>
+
+                </div>
+
+
+                <select
+                    id="statusFilter"
+                    class="status-filter"
+                >
+
+                    <option value="all">
+                        All Status
+                    </option>
+
+                    <option value="Delivered">
+                        Delivered
+                    </option>
+
+                    <option value="In Transit">
+                        In Transit
+                    </option>
+
+                    <option value="Dispatched">
+                        Dispatched
+                    </option>
+
+                    <option value="Delayed">
+                        Delayed
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                SHIPMENT
+                            </th>
+
+                            <th>
+                                ROUTE
+                            </th>
+
+                            <th>
+                                MODE
+                            </th>
+
+                            <th>
+                                COST
+                            </th>
+
+                            <th>
+                                RELIABILITY
+                            </th>
+
+                            <th>
+                                STATUS
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody
+                        id="reportTableBody"
+                    >
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="../js/reports.js"
+    ></script>
+
+
+</body>
+
+</html>
